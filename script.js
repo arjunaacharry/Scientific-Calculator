@@ -3,12 +3,17 @@ function clearDisplay() {
   }
   
   function appendCharacter(char) {
-    document.getElementById('display').value += char;
+    const display = document.getElementById('display');
+    if (display.value === 'Error' || display.value === 'Infinity') {
+      clearDisplay();
+    }
+    display.value += char;
   }
   
   function calculateResult() {
     try {
-      document.getElementById('display').value = eval(document.getElementById('display').value);
+      const display = document.getElementById('display');
+      display.value = eval(display.value);
     } catch (error) {
       document.getElementById('display').value = 'Error';
     }
