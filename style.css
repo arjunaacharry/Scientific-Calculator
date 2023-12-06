@@ -8,14 +8,16 @@ body {
   }
   
   .calculator {
+    background-color: rgb(56, 56, 56);
     width: 300px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #a71c1c;
     border-radius: 5px;
   }
   
   #display {
-    width: 100%;
+    background-color: white;
+    width: 95.5%;
     margin-bottom: 10px;
     padding: 5px;
     font-size: 18px;
@@ -31,5 +33,19 @@ body {
     width: 100%;
     padding: 10px;
     font-size: 16px;
+    color: rgb(255, 255, 255);
   }
   
+  .clear{
+    background-color: red;
+    
+  }
+
+  .btn{
+    background-color: rgb(0, 0, 0);
+    border-radius: 8px;
+  }
+
+  .btn:hover {
+    background-color: rgb(146, 146, 146);
+  }
