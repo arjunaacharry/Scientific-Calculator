@@ -1,35 +1,43 @@
+let isResultCalculated = false;
+
 function clearDisplay() {
-    document.getElementById('display').value = '';
+  document.getElementById('display').value = '';
+  isResultCalculated = false;
+}
+
+function appendCharacter(char) {
+  const display = document.getElementById('display');
+  if (isResultCalculated) {
+    clearDisplay();
   }
-  
-  function appendCharacter(char) {
+  if (display.value === 'Error' || display.value === 'Infinity') {
+    clearDisplay();
+  }
+  display.value += char;
+}
+
+function calculateResult() {
+  try {
     const display = document.getElementById('display');
-    if (display.value === 'Error' || display.value === 'Infinity') {
-      clearDisplay();
-    }
-    display.value += char;
+    display.value = eval(display.value);
+    isResultCalculated = true;
+  } catch (error) {
+    display.value = 'Error';
   }
-  
-  function calculateResult() {
-    try {
-      const display = document.getElementById('display');
-      display.value = eval(display.value);
-    } catch (error) {
-      document.getElementById('display').value = 'Error';
-    }
+}
+
+function calculateSquareRoot() {
+  const currentValue = parseFloat(document.getElementById('display').value);
+  if (!isNaN(currentValue)) {
+    document.getElementById('display').value = Math.sqrt(currentValue);
+    isResultCalculated = true;
   }
-  
-  function calculateSquareRoot() {
-    const currentValue = parseFloat(document.getElementById('display').value);
-    if (!isNaN(currentValue)) {
-      document.getElementById('display').value = Math.sqrt(currentValue);
-    }
+}
+
+function calculatePower() {
+  const currentValue = parseFloat(document.getElementById('display').value);
+  if (!isNaN(currentValue)) {
+    document.getElementById('display').value = Math.pow(currentValue, 2);
+    isResultCalculated = true;
   }
-  
-  function calculatePower() {
-    const currentValue = parseFloat(document.getElementById('display').value);
-    if (!isNaN(currentValue)) {
-      document.getElementById('display').value = Math.pow(currentValue, 2);
-    }
-  }
-  
+}
